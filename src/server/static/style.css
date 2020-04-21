@@ -1,0 +1,93 @@
+:root {
+    --main-color: rgb(209, 38, 104);
+}
+
+body,
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: var(--main-color);
+    transition: border-color 0.3s ease-out, color 0.3s ease-out;
+}
+
+body {
+    height: 100vh;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.block-file {
+    width: 25%;
+    background-color: rgb(41, 40, 40);
+    border: solid var(--main-color) 1px;
+    border-right: none;
+}
+
+.block-work {
+    width: 75%;
+    background-color: rgb(41, 40, 40);
+    border: solid var(--main-color) 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-tabs {
+    min-height: 19px;
+    border-bottom: solid var(--main-color) 1px;
+    padding-left: 21px;
+}
+
+.work-place {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.terminal {
+    min-height: 30vh;
+    border-top: solid var(--main-color) 1px;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+}
+
+.block-tabs,
+.work-place {
+    position: relative;
+}
+
+.toggler {
+    color: var(--main-color);
+    line-height: 12px;
+    cursor: pointer;
+}
+
+.block-tabs .toggler {
+    padding: 3px 4px 4px 7px;
+    position: absolute;
+    border-right: solid var(--main-color) 1px;
+    left: 0;
+}
+
+.work-place .toggler {
+    right: 0;
+    border: 1px solid;
+    bottom: calc(30vh + 1px);
+    position: fixed;
+    padding: 2px 5px 5px;
+}

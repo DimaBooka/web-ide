@@ -5,11 +5,12 @@ import { foldersHandlers } from './folders'
 import * as path from "path";
 
 const app = express()
+app.use(express.static(path.join(__dirname,'/../static')));
 const server = new http.Server(app)
 export const socketServer = io(server)
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname + '/../index.html'));
+    res.sendFile(path.resolve(__dirname + '/../static/index.html'));
 });
 
 const folderNps = socketServer.of('/folders')
