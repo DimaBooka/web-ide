@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+</head>
+<body>
+
+    <script>
+        const data = {}
+
+        socket = io('/folders');
+        socket.emit('get folders', '');
+
+        socket.on('folders', function(msg) {
+            const content = msg
+            data[content.path] = content.data
+
+            content.data.forEach(function (f) {
+                if (f.type === 'folder') {
+                    socket.emit('get folder', f.fullPath)
+                }
+            })
+        });
+
+        socket.on('folder', function(msg) {
+            const content = msg
+            data[content.path] = content.data
+            content.data.forEach(function (f) {
+                if (f.type === 'folder') {
+                    socket.emit('get folder', f.fullPath)
+                }
+            })
+            console.log(data);
+        });
+    </script>
+
+</body>
+</html>
